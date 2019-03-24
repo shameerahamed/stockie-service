@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.TbUser" table="TB_USERS">
+        <id name="userId" type="java.lang.Long">
+            <column name="USER_ID"/>
+            <generator class="identity"/>
+        </id>
+        <property generated="never" lazy="false" name="enabled" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="ENABLED"/>
+        </property>
+        <property generated="never" lazy="false" name="password" optimistic-lock="true" type="string" unique="false">
+            <column name="PASSWORD"/>
+        </property>
+        <property generated="never" lazy="false" name="userName" optimistic-lock="true" type="string" unique="false">
+            <column name="USER_NAME"/>
+        </property>
+    </class>
+</hibernate-mapping>

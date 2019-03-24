@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.Customer" table="CUSTOMER">
+        <id name="custId" type="int">
+            <column name="CUST_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="custname" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="CUSTNAME"/>
+        </property>
+        <property generated="never" lazy="false" name="address" optimistic-lock="true" type="string" unique="false">
+            <column name="ADDRESS"/>
+        </property>
+        <property generated="never" lazy="false" name="phoneNo" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PHONE_NO"/>
+        </property>
+        <property generated="never" lazy="false" name="EMail" optimistic-lock="true" type="string" unique="false">
+            <column length="60" name="E_MAIL"/>
+        </property>
+        <property generated="never" lazy="false" name="regDate" optimistic-lock="true" type="date" unique="false">
+            <column length="8" name="REG_DATE"/>
+        </property>
+        <property generated="never" lazy="false" name="createdTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="CREATED_TS"/>
+        </property>
+        <property generated="never" lazy="false" name="modifiedTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="MODIFIED_TS"/>
+        </property>
+        <set fetch="select" inverse="true" lazy="true" mutable="true" name="orders" table="ORDERS">
+            <key on-delete="noaction">
+                <column name="CUST_ID"/>
+            </key>
+            <one-to-many class="com.stockie.model.Order"/>
+        </set>
+    </class>
+</hibernate-mapping>

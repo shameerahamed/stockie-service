@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.Product" table="PRODUCT">
+        <id name="prodId" type="int">
+            <column name="PROD_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="com.stockie.model.ProductBrand" embed-xml="true" fetch="select" insert="true" name="productBrand" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="BRAND_ID"/>
+        </many-to-one>
+        <many-to-one class="com.stockie.model.ProductType" embed-xml="true" fetch="select" insert="true" name="productType" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="TYPE_ID"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="prodName" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="PROD_NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="quantity" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="QUANTITY"/>
+        </property>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="PRICE" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="quantitySold" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="QUANTITY_SOLD"/>
+        </property>
+        <property generated="never" lazy="false" name="totalQuantity" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="TOTAL_QUANTITY"/>
+        </property>
+        <property generated="never" lazy="false" name="activeFlag" optimistic-lock="true" type="string" unique="false">
+            <column length="1" name="ACTIVE_FLAG"/>
+        </property>
+        <property generated="never" lazy="false" name="brandName" optimistic-lock="true" type="string" unique="false">
+            <column name="BRAND_NAME"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="layoutDetails" optimistic-lock="true" sort="unsorted" table="LAYOUT_DETAILS">
+            <key on-delete="noaction">
+                <column name="PROD_ID"/>
+            </key>
+            <one-to-many class="com.stockie.model.LayoutDetail" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="orderItems" optimistic-lock="true" sort="unsorted" table="ORDER_ITEMS">
+            <key on-delete="noaction">
+                <column name="PROD_ID"/>
+            </key>
+            <one-to-many class="com.stockie.model.OrderItem" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

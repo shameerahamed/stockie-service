@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.LayoutDetail" table="LAYOUT_DETAILS">
+        <id name="layoutDetailId" type="int">
+            <column name="LAYOUT_DETAIL_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="com.stockie.model.Layout" embed-xml="true" fetch="select" insert="true" name="layout" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="LAYOUT_ID"/>
+        </many-to-one>
+        <many-to-one class="com.stockie.model.Product" embed-xml="true" fetch="select" insert="true" name="product" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="PROD_ID"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="pageNo" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PAGE_NO"/>
+        </property>
+        <property generated="never" lazy="false" name="tabNo" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="TAB_NO"/>
+        </property>
+        <property generated="never" lazy="false" name="colorCode" optimistic-lock="true" type="string" unique="false">
+            <column length="20" name="COLOR_CODE"/>
+        </property>
+        <property generated="never" lazy="false" name="createdTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="CREATED_TS"/>
+        </property>
+        <property generated="never" lazy="false" name="modifiedTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="MODIFIED_TS"/>
+        </property>
+    </class>
+</hibernate-mapping>

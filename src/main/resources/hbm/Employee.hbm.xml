@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.Employee" table="EMPLOYEE">
+        <id name="empId" type="int">
+            <column name="EMP_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="empName" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="EMP_NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="gender" optimistic-lock="true" type="java.lang.Character" unique="false">
+            <column length="1" name="GENDER"/>
+        </property>
+        <property generated="never" lazy="false" name="address" optimistic-lock="true" type="string" unique="false">
+            <column name="ADDRESS"/>
+        </property>
+        <property generated="never" lazy="false" name="phoneNo" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="PHONE_NO"/>
+        </property>
+        <property generated="never" lazy="false" name="emailAddress" optimistic-lock="true" type="string" unique="false">
+            <column length="60" name="EMAIL_ADDRESS"/>
+        </property>
+        <property generated="never" lazy="false" name="designation" optimistic-lock="true" type="string" unique="false">
+            <column length="60" name="DESIGNATION"/>
+        </property>
+        <property generated="never" lazy="false" name="doj" optimistic-lock="true" type="date" unique="false">
+            <column length="8" name="DOJ"/>
+        </property>
+        <property generated="never" lazy="false" name="dob" optimistic-lock="true" type="date" unique="false">
+            <column length="8" name="DOB"/>
+        </property>
+        <property generated="never" lazy="false" name="salary" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="SALARY"/>
+        </property>
+        <property generated="never" lazy="false" name="age" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="AGE"/>
+        </property>
+        <property generated="never" lazy="false" name="createdTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="CREATED_TS"/>
+        </property>
+        <property generated="never" lazy="false" name="modifiedTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="MODIFIED_TS"/>
+        </property>
+    </class>
+</hibernate-mapping>

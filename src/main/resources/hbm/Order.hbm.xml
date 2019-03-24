@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.Order" table="ORDERS">
+        <id name="orderId" type="int">
+            <column name="ORDER_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="com.stockie.model.Customer" embed-xml="true" fetch="select" insert="true" name="customer" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="CUST_ID"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="orderDate" optimistic-lock="true" type="date" unique="false">
+            <column length="8" name="ORDER_DATE"/>
+        </property>
+        <property generated="never" lazy="false" name="discount" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="DISCOUNT" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="status" optimistic-lock="true" type="string" unique="false">
+            <column length="40" name="STATUS"/>
+        </property>
+        <property generated="never" lazy="false" name="createdTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="CREATED_TS"/>
+        </property>
+        <property generated="never" lazy="false" name="modifiedTs" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="MODIFIED_TS"/>
+        </property>
+        <property generated="never" lazy="false" name="notes" optimistic-lock="true" type="string" unique="false">
+            <column name="NOTES"/>
+        </property>
+        <property generated="never" lazy="false" name="payType" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="PAY_TYPE"/>
+        </property>
+        <property generated="never" lazy="false" name="ccType" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="CC_TYPE"/>
+        </property>
+        <property generated="never" lazy="false" name="totalAmount" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="TOTAL_AMOUNT" precision="30"/>
+        </property>
+        <property generated="never" lazy="false" name="changeReturn" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="CHANGE_RETURN" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="paymentDate" optimistic-lock="true" type="date" unique="false">
+            <column length="8" name="PAYMENT_DATE"/>
+        </property>
+        <property generated="never" lazy="false" name="netAmount" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="NET_AMOUNT" precision="17" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="oldBalance" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="OLD_BALANCE" precision="17" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="subTotal" optimistic-lock="true" type="java.lang.Double" unique="false">
+            <column name="SUB_TOTAL" precision="17" scale="0"/>
+        </property>
+        <property generated="never" lazy="false" name="tax" optimistic-lock="true" type="java.lang.Long" unique="false">
+            <column name="TAX"/>
+        </property>
+        <property generated="never" lazy="false" name="receivedAmount" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="RECEIVED_AMOUNT" precision="30"/>
+        </property>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="orderItems" optimistic-lock="true" sort="unsorted" table="ORDER_ITEMS">
+            <key on-delete="noaction">
+                <column name="ORDER_ID"/>
+            </key>
+            <one-to-many class="com.stockie.model.OrderItem" embed-xml="true" not-found="exception"/>
+        </set>
+        <set embed-xml="true" fetch="select" inverse="true" lazy="true" mutable="true" name="orderPayments" optimistic-lock="true" sort="unsorted" table="ORDER_PAYMENT">
+            <key on-delete="noaction">
+                <column name="ORDER_ID" precision="10" scale="0"/>
+            </key>
+            <one-to-many class="com.stockie.model.OrderPayment" embed-xml="true" not-found="exception"/>
+        </set>
+    </class>
+</hibernate-mapping>

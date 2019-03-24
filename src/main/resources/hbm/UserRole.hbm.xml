@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.UserRole" table="USER_ROLES">
+        <id name="userRoleId" type="int">
+            <column name="USER_ROLE_ID"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="com.stockie.model.User" embed-xml="true" fetch="select" insert="true" name="users" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column length="45" name="USER_NAME"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="role" optimistic-lock="true" type="string" unique="false">
+            <column length="45" name="ROLE"/>
+        </property>
+    </class>
+</hibernate-mapping>

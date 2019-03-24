@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.OrderPayment" table="ORDER_PAYMENT">
+        <id name="ordPayId" type="long">
+            <column name="ORD_PAY_ID" precision="10" scale="0"/>
+            <generator class="assigned"/>
+        </id>
+        <many-to-one class="com.stockie.model.Order" embed-xml="true" fetch="select" insert="true" name="orders" not-found="exception" optimistic-lock="true" unique="false" update="true">
+            <column name="ORDER_ID" precision="10" scale="0"/>
+        </many-to-one>
+        <property generated="never" lazy="false" name="payType" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="PAY_TYPE"/>
+        </property>
+        <property generated="never" lazy="false" name="ccType" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="CC_TYPE"/>
+        </property>
+        <property generated="never" lazy="false" name="totalAmount" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="TOTAL_AMOUNT" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="changeReturn" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="CHANGE_RETURN" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="oldBalance" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="OLD_BALANCE" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="paymentDate" optimistic-lock="true" type="date" unique="false">
+            <column length="8" name="PAYMENT_DATE"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Generated Jun 25, 2017 1:53:15 PM by Hibernate Tools 5.2.3.Final --><!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping auto-import="true" default-access="property" default-cascade="none" default-lazy="true">
+    <class name="com.stockie.model.Item" table="ITEM">
+        <id name="id" type="int">
+            <column name="ID"/>
+            <generator class="assigned"/>
+        </id>
+        <property generated="never" lazy="false" name="name" optimistic-lock="true" type="string" unique="false">
+            <column length="100" name="NAME"/>
+        </property>
+        <property generated="never" lazy="false" name="manu" optimistic-lock="true" type="string" unique="false">
+            <column length="50" name="MANU"/>
+        </property>
+        <property generated="never" lazy="false" name="weight" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="WEIGHT" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="price" optimistic-lock="true" type="big_decimal" unique="false">
+            <column name="PRICE" precision="10"/>
+        </property>
+        <property generated="never" lazy="false" name="popularity" optimistic-lock="true" type="java.lang.Integer" unique="false">
+            <column name="POPULARITY"/>
+        </property>
+        <property generated="never" lazy="false" name="includes" optimistic-lock="true" type="string" unique="false">
+            <column length="200" name="INCLUDES"/>
+        </property>
+        <property generated="never" lazy="false" name="lastModified" optimistic-lock="true" type="timestamp" unique="false">
+            <column length="23" name="LAST_MODIFIED"/>
+        </property>
+    </class>
+</hibernate-mapping>
